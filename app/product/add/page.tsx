@@ -24,7 +24,7 @@ export default function AddProduct() {
         // } else {
             setLoading(true);
             try {
-                const result = await axios.get(`/api/scrape-data/auchan?url=${(url.toString())}`);
+                const result = await axios.get(`/api/scrape-data?url=${(url.toString())}`);
                 setProduct(result.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -41,13 +41,6 @@ export default function AddProduct() {
             <h1 className='font-bold p-1'>Add a product</h1>
             <form onSubmit={handleSubmit}>
             <label className="input input-bordered flex items-center gap-2 pr-0">
-            {/* <select className="flex items-center gap-2" defaultValue={"Choose"} onChange={(e) => setShop(e.target.value)}>
-                <option value="Choose" disabled>Choose</option>
-                <option value="auchan">Auchan</option>
-                <option value="tesco">Tesco</option>
-                <option value="lidl">Lidl</option>
-                <option value="aldi">Aldi</option>
-            </select> */}
             <input type="text" className="grow" placeholder="URL" value={url} onChange={(e) => setUrl(e.target.value)}/>
             <button type="submit" className='btn btn-primary'>Submit</button>
             </label>
@@ -69,7 +62,9 @@ export default function AddProduct() {
 
     function Skeleton() {
         return (
-            <div className="skeleton h-32 w-32"></div>
+            <div className='flex flex-row justify-center mt-6'>
+                <div className="skeleton w-[90vw] h-[30vh]"></div>
+            </div>
         )
     }
 

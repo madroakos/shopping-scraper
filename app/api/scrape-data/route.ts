@@ -29,7 +29,7 @@ async function fetchJsonLd(url: string) {
               return {
                 name: (item as { [key: string]: never })['http://schema.org/name']?.[0]?.['@value'],
                 shops: [{
-                  name: "Auchan",
+                  name: "Shop",
                   link: url,
                   price: offerTyped['http://schema.org/price']?.[0]?.['@value'],
                 }],
